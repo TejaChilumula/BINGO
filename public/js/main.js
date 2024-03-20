@@ -1,7 +1,7 @@
 //const { reset } = require("nodemon");
 
 //const { randId } = require("../../utils");
-import io from 'socket.io-client';
+const io = require('socket.io-client');
 const socket = io();
 const Codedisp      = document.getElementById("Code");
 const initialScreen = document.getElementById("initialscreen");
