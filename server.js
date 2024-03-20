@@ -16,7 +16,7 @@ const server = http.createServer(app);
 
 const io = socketio(server);
 
-//io.use(cors());
+io.use(cors());
 
 app.use(express.static(path.join(__dirname,'public')));
 //var playerOne , playerTwo;
