@@ -2,7 +2,7 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
-
+const cors = require('cors');
 const { randId } = require('./utils');
 //const { Socket } = require('dgram');
 //const { static } = require('express');
@@ -16,7 +16,7 @@ const server = http.createServer(app);
 
 const io = socketio(server);
 
-
+//io.use(cors());
 
 app.use(express.static(path.join(__dirname,'public')));
 //var playerOne , playerTwo;
@@ -110,7 +110,7 @@ io.on('connection', socket => {
         turn.playerOne = 0;
         turn.playerTwo=0;
 
-        console.log(Roomss);
+        console.log("This is room id",Roomss);
         
         //io.to(roomid).emit('roomjoined',roomid);
         
@@ -131,7 +131,7 @@ io.on('connection', socket => {
                 //io.sockets.adapter.rooms[gameCode] == undefined ? room = undefined : room = io.sockets.adapter.rooms.get(gameCode).size;
             if(gameCode.length == 5){
                 room = io.sockets.adapter.rooms.get(gameCode);
-                console.log(room);
+                console.log("Second user joined in existing room",room);
                 
                 let allUsers
                 if(room){
@@ -164,7 +164,7 @@ io.on('connection', socket => {
                     Roomss[socket.number] = socket.id;
                     socket.emit("turn" , socket.number);
                     console.log("socket no ",socket.number);
-                    console.log(Roomss);
+                    console.log("The 2nd Guy Joined",Roomss);
                     //console.log(gameCode);
                     //console.log(numClints , allUsers);
 

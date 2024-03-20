@@ -1,5 +1,3 @@
-
-const socket = io();
 const Codedisp      = document.getElementById("Code");
 const initialScreen = document.getElementById("initialscreen");
 const gameScreen    = document.getElementById("gamescreen");
@@ -171,10 +169,10 @@ var bingo=[0,0,0,0,0,0,0,0,0,0,0,0];
                             num1=0;
                             num2=id;
                         }
-                        console.log(ele);
+                        console.log("this is ele",ele);
                         
-                        console.log(num1);
-                        console.log(num2);
+                        console.log("this is num1",num1);
+                        console.log("this is num2",num2);
                         
             
 
@@ -186,7 +184,7 @@ var bingo=[0,0,0,0,0,0,0,0,0,0,0,0];
                 ele.value=pre;
                 pre=pre+1;
                 //var Val=event.target;
-                //console.log(Val);
+                console.log("this is inside pre");
                 winner[num1][num2]=ele.innerHTML;
                 for(i=0;i<5;i++)
                 for(j=0;j<5;j++)
@@ -200,8 +198,11 @@ var bingo=[0,0,0,0,0,0,0,0,0,0,0,0];
                 
                 // socket
                 //if(ele.querySelector('.highlight') == null || ele.querySelector('.highlight2') == null)
-                if(ele.classList.contains('highlight3') || ele.classList.contains('highlight2')){}
-                else socket.emit('numclick' , tnum,id,player);
+                if(ele.classList.contains('highlight3') || ele.classList.contains('highlight2')){console.log("highlighted");}
+                else {
+                    console.log("emitted");
+                    socket.emit('numclick' , tnum,id,player);
+                }
                         
 
             }
@@ -358,8 +359,9 @@ var bingo=[0,0,0,0,0,0,0,0,0,0,0,0];
                         alert("Invalid Game Code");
                     }
                     function TooManyPlayers(){
-                        resett();
                         alert("Two Players are already playing");
+                        resett();
+                        
                     }
                     function resett(){
 
