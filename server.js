@@ -18,7 +18,7 @@ const io = socketio(server);
 
 app.use(cors());
 app.use(cors({
-    origin: 'https://bingo-game-aa9r9mhwm-brahma-teja-chilumulas-projects.vercel.app/', // Allow requests from this origin
+    origin: 'https://bingo-game-h8ookm60c-brahma-teja-chilumulas-projects.vercel.app/',
     methods: ['GET', 'POST'], // Allow only specified HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'], // Allow only specified headers
   }));
