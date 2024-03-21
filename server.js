@@ -16,8 +16,12 @@ const server = http.createServer(app);
 
 const io = socketio(server);
 
-//io.use(cors());
-
+app.use(cors());
+app.use(cors({
+    origin: 'https://bingo-game-delta.vercel.app', // Allow requests from this origin
+    methods: ['GET', 'POST'], // Allow only specified HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allow only specified headers
+  }));
 app.use(express.static(path.join(__dirname,'public')));
 //var playerOne , playerTwo;
 var turnid , t=1,warnn=0,  c=0 , sockid ,wait;
@@ -192,6 +196,7 @@ io.on('connection', socket => {
 });
 
 const PORT = process.env.PORT || 3000;
+console.log(process.env.PORT);
 
 
 server.listen(PORT , () => console.log(`server is running on ${PORT}`));
