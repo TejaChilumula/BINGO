@@ -13,7 +13,7 @@ const Jumbotron        = document.getElementById("jumbotron");
 var enable = document.getElementsByClassName("btttn");
 
 
-
+const socket = io();
 var game , player , turnidd;
 
 /*bunty.addEventListener('click' , () => {
